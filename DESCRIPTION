@@ -1,0 +1,18 @@
+Package: colorful
+Version: 0.0.1
+Authors@R: c(
+    person("Ricardo", "Oliveros-Ramos", email="ricardo.oliveros@gmail.com", role=c("aut", "cre")))
+Title: Some miscelaneous graphic tools using base R (graphics).
+Description: Some miscelaneous graphic tools using base R (graphics).
+Depends: 
+  R (>= 2.15),
+  graphics,
+  grDevices
+Imports:
+  stats,
+  utils
+License: GPL-2
+URL: http://roliveros-ramos.github.io/colorful
+BugReports: https://github.com/roliveros-ramos/colorful/issues
+ByteCompile: TRUE
+RoxygenNote: 6.0.1

@@ -36,6 +36,8 @@ spider = function(x, ylim, type="b", col=1, fill=FALSE, border=NULL,
 
   theta = theta + head(seq(0, 360, length=nvar+1), nvar)
 
+  ylim = .checkYlim(ylim, x)
+
   xy = polar2rect(radius=x, angle=theta, ylim=ylim, rmin=rmin)
   x = xy$x
   y = xy$y
@@ -99,6 +101,8 @@ donut = function(x1, x2, ylim, type="b", col=1, fill=FALSE, border=NULL,
   if(is.null(rmin)) rmin = 1/nvar
 
   theta = theta + head(seq(0, 360, length=nvar+1), nvar)
+
+  ylim = .checkYlim(ylim, x)
 
   xy1 = polar2rect(radius=x1, angle=theta, ylim=ylim, rmin=rmin)
   x1 = xy1$x

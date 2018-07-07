@@ -6,6 +6,23 @@ polar2rect = function(radius, angle, ylim, rmin=0) {
   return(list(x=x, y=y))
 }
 
+getAngles = function(theta, n, clockwise=FALSE) {
+  if(length(theta)==n) {
+    if(length(unique(theta %% 360))!=n) stop("Angles suplied in theta are not unique.")
+    theta0 = theta - theta[1] # rotating first to zero degrees
+    if(any(theta0>=360)) stop("Angles supplied exceed one turn. ")
+    inc = all(diff(theta) > 0)
+    dec = all(diff(theta) < 0)
+    if(!dec & !inc) stop("Angles must be suplied in an increasing or decreasing order.")
+    return(theta)
+  }
+  if(length(theta)==1) {
+    tmax = if(isTRUE(clockwise)) -360 else 360
+    theta = theta + head(seq(0, tmax, length=n+1), n)
+    return(theta)
+  }
+  stop("The argument 'theta' must be a single rotation or the angles for each value (length of x).")
+}
 
 .checkYlim = function(ylim, x) {
 

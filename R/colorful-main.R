@@ -26,7 +26,7 @@
 #' @examples
 spider = function(x, ylim, type="b", col=1, fill=FALSE, border=NULL,
                   theta=0, pch=19, lwd=1, lty=1, cex=NULL, density=NULL,
-                  angle=45, alpha=1, rmin=NULL, ...) {
+                  angle=45, alpha=1, rmin=NULL, clockwise=FALSE, ...) {
 
   type = match.arg(type, c("b", "p", "l", "n"))
 
@@ -34,7 +34,7 @@ spider = function(x, ylim, type="b", col=1, fill=FALSE, border=NULL,
 
   if(is.null(rmin)) rmin = 1/nvar
 
-  theta = theta + head(seq(0, 360, length=nvar+1), nvar)
+  theta = getAngles(theta, n=nvar, clockwise=clockwise)
 
   ylim = .checkYlim(ylim, x)
 
@@ -90,7 +90,7 @@ spider = function(x, ylim, type="b", col=1, fill=FALSE, border=NULL,
 #' @examples
 donut = function(x1, x2, ylim, type="b", col=1, fill=FALSE, border=NULL,
                  theta=0, pch=19, lwd=1, lty=1, cex=NULL, density=NULL,
-                 angle=45, alpha=1, rmin=NULL, ...) {
+                 angle=45, alpha=1, rmin=NULL, clockwise=FALSE, ...) {
 
   if(length(x1)!=length(x2)) stop("Lengths of 'x1' and 'x2' don't match.")
 
@@ -100,7 +100,7 @@ donut = function(x1, x2, ylim, type="b", col=1, fill=FALSE, border=NULL,
 
   if(is.null(rmin)) rmin = 1/nvar
 
-  theta = theta + head(seq(0, 360, length=nvar+1), nvar)
+  theta = getAngles(theta, n=nvar, clockwise=clockwise)
 
   ylim = .checkYlim(ylim, x)
 

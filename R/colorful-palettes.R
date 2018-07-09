@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-biasPalette = function(n, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"), symmetric=TRUE, p=0.8) {
+biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"), symmetric=TRUE, p=0.8) {
 
   if(prod(zlim)>=0) stop("Zero must be within 'zlim'.")
 

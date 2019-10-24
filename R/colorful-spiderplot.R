@@ -65,7 +65,7 @@ spiderAxis = function(n, at=0.5, rmin=1/nvar, theta=0, col="grey", labels=NULL,
   segments(x0=xy0$x, x1=xy1$x, y0=xy0$y, y1=xy1$y, col=col, ...)
 
   if(is.null(labels)) labels = 1:n
-  if(length(labels)==1) rep(labels, n)
+  if(length(labels)==1) labels = rep(labels, n)
   if(length(labels)!=n) stop("Wrong number of labels.")
   labs = polar2rect(radius=x1*1.12, angle=theta0, ylim=ylim, rmin=rmin)
   text(labs$x, labs$y, labels = labels)

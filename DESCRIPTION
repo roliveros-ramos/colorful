@@ -15,4 +15,4 @@ License: GPL-2
 URL: http://roliveros-ramos.github.io/colorful
 BugReports: https://github.com/roliveros-ramos/colorful/issues
 ByteCompile: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

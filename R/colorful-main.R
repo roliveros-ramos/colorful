@@ -1,6 +1,5 @@
 
 
-
 #' Add a spider web to a spider plot.
 #'
 #' @param x

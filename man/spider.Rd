@@ -5,8 +5,9 @@
 \title{Add a spider web to a spider plot.}
 \usage{
 spider(x, ylim, type = "b", col = 1, fill = FALSE, border = NULL,
-  theta = 0, pch = 19, lwd = 1, lty = 1, cex = NULL, density = NULL,
-  angle = 45, alpha = 1, rmin = NULL, ...)
+  theta = 0, pch = 19, lwd = 1, lty = 1, cex = NULL,
+  density = NULL, angle = 45, alpha = 1, rmin = NULL,
+  clockwise = FALSE, ...)
 }
 \arguments{
 \item{...}{}

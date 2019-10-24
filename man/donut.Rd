@@ -4,9 +4,10 @@
 \alias{donut}
 \title{Add a donut to a spider plot.}
 \usage{
-donut(x1, x2, ylim, type = "b", col = 1, fill = FALSE, border = NULL,
-  theta = 0, pch = 19, lwd = 1, lty = 1, cex = NULL, density = NULL,
-  angle = 45, alpha = 1, rmin = NULL, ...)
+donut(x1, x2, ylim, type = "b", col = 1, fill = FALSE,
+  border = NULL, theta = 0, pch = 19, lwd = 1, lty = 1,
+  cex = NULL, density = NULL, angle = 45, alpha = 1, rmin = NULL,
+  clockwise = FALSE, ...)
 }
 \arguments{
 \item{...}{}

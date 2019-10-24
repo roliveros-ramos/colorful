@@ -4,8 +4,8 @@
 \alias{biasPalette}
 \title{Color palette for 'bias' plots.}
 \usage{
-biasPalette(n, zlim = c(-1, 1), col = c("dodgerblue3", "firebrick3"),
-  symmetric = TRUE, p = 0.8)
+biasPalette(n = 64, zlim = c(-1, 1), col = c("dodgerblue3",
+  "firebrick3"), symmetric = TRUE, p = 0.8, center = 0)
 }
 \arguments{
 \item{n}{Number of colors}
@@ -17,6 +17,8 @@ biasPalette(n, zlim = c(-1, 1), col = c("dodgerblue3", "firebrick3"),
 \item{symmetric}{Boolean, if TRUE makes the palette symmetric (same intensity given the absolute value of the variable).}
 
 \item{p}{Power to scale the increase in intensity. Default is 0.8, 1 gives linear decrease.}
+
+\item{center}{Center of the palette, zero by default.}
 }
 \description{
 Color palette for 'bias' plots.

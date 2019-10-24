@@ -7,12 +7,16 @@
 #' @param col Vector of two colors, for the negative and positive values.
 #' @param symmetric Boolean, if TRUE makes the palette symmetric (same intensity given the absolute value of the variable).
 #' @param p Power to scale the increase in intensity. Default is 0.8, 1 gives linear decrease.
+#' @param center Center of the palette, zero by default.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"), symmetric=TRUE, p=0.8) {
+biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
+                       symmetric=TRUE, p=0.8, center=0) {
+
+  zlim = zlim - center
 
   if(prod(zlim)>=0) stop("Zero must be within 'zlim'.")
 

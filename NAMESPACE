@@ -2,6 +2,8 @@
 
 S3method(spiderplot,default)
 export(biasPalette)
+export(directionalPalette)
+export(divergencePalette)
 export(donut)
 export(spider)
 export(spiderAxis)

@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
+divergencePalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
                        symmetric=TRUE, p=0.8, center=0) {
 
   zlim = zlim - center
@@ -37,14 +37,6 @@ biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
 
   alpha = sign(alpha)*abs(alpha)^p
 
-  # plot(zseq, abs(alpha), type="p", col=col[(sign(alpha)+3)/2])
-
-  .makeTransparent = function(alpha, col) {
-    col = col2rgb(col)
-    alpha = floor(255*alpha)
-    rgb(red=col[1], green=col[2], blue=col[3], alpha=alpha, maxColorValue=255)
-  }
-
   cols = c(sapply(abs(alpha[alpha<0]), FUN=.makeTransparent, col=col[1]),
            sapply(abs(alpha[alpha>=0]), FUN=.makeTransparent, col=col[2]))
 
@@ -52,3 +44,33 @@ biasPalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
 
 }
 
+
+
+#' Directional color palette.
+#'
+#' @param n Number of colors
+#' @param col Base color for the palette.
+#' @param p Power to scale the increase in intensity. Default is 0.8, 1 gives linear decrease.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+directionalPalette = function(n=64, col="green3", p=0.8, ...) {
+
+  alpha = seq(from=0, to=1, length=n)^p
+
+  cols = sapply(alpha, FUN=.makeTransparent, col=col)
+
+  return(unlist(cols))
+
+}
+
+
+# Internal ----------------------------------------------------------------
+
+  .makeTransparent = function(alpha, col) {
+    col = col2rgb(col)
+    alpha = floor(255*alpha)
+    rgb(red=col[1], green=col[2], blue=col[3], alpha=alpha, maxColorValue=255)
+  }

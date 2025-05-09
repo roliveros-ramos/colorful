@@ -1,5 +1,3 @@
-
-
 #' Color palette for 'bias' plots.
 #'
 #' @param n Number of colors
@@ -14,13 +12,20 @@
 #'
 #' @examples
 divergencePalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick3"),
-                       symmetric=TRUE, p=0.8, center=0) {
+                       symmetric=TRUE, p=0.8, center=0, x=NULL, intensity=1, ...) {
+
+  if(!is.null(x)) {
+    zlim = range(x, na.rm=TRUE)
+  }
 
   zlim = zlim - center
 
   if(prod(zlim)>=0) stop("Zero must be within 'zlim'.")
 
   zseq = seq(from=zlim[1], to=zlim[2], length=n)
+  breaks = zseq
+  breaks[1] = -Inf
+  breaks[n] = Inf
 
   if(isTRUE(symmetric)) {
 
@@ -37,8 +42,13 @@ divergencePalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick
 
   alpha = sign(alpha)*abs(alpha)^p
 
-  cols = c(sapply(abs(alpha[alpha<0]), FUN=.makeTransparent, col=col[1]),
-           sapply(abs(alpha[alpha>=0]), FUN=.makeTransparent, col=col[2]))
+  cols = c(sapply(intensity*abs(alpha[alpha<0]), FUN=.makeTransparent, col=col[1]),
+           sapply(intensity*abs(alpha[alpha>=0]), FUN=.makeTransparent, col=col[2]))
+
+  if(!is.null(x)) {
+    ind = cut(x, breaks = breaks, labels = FALSE)
+    return(cols[ind])
+  }
 
   return(unlist(cols))
 
@@ -56,11 +66,16 @@ divergencePalette = function(n=64, zlim=c(-1,1), col=c("dodgerblue3", "firebrick
 #' @export
 #'
 #' @examples
-directionalPalette = function(n=64, col="green3", p=0.8, ...) {
+directionalPalette = function(n=64, col="green3", p=0.8, x=NULL, ...) {
 
   alpha = seq(from=0, to=1, length=n)^p
 
   cols = sapply(alpha, FUN=.makeTransparent, col=col)
+
+  if(!is.null(x)) {
+    ind = cut(x, breaks = n, labels = FALSE)
+    return(cols[ind])
+  }
 
   return(unlist(cols))
 
